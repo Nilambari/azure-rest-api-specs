@@ -2197,7 +2197,9 @@
             "DES3",
             "AES128",
             "AES192",
-            "AES256"
+            "AES256",
+	    "GCMAES256",
+	    "GCMAES128"			
           ],
           "x-ms-enum": {
             "name": "IkeEncryption",
@@ -2211,7 +2213,9 @@
             "MD5",
             "SHA1",
             "SHA256",
-            "SHA384"
+            "SHA384",
+	    "GCMAES256",
+	    "GCMAES128"			
           ],
           "x-ms-enum": {
             "name": "IkeIntegrity",
@@ -2246,7 +2250,9 @@
             "PFS2048",
             "ECP256",
             "ECP384",
-            "PFS24"
+            "PFS24",
+	    "PFS14",
+	    "PFSMM"			
           ],
           "x-ms-enum": {
             "name": "PfsGroup",

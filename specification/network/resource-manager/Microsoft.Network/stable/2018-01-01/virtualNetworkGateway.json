@@ -728,7 +728,7 @@
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnclientipsecparameters": {
-      "get": {
+      "post": {
         "tags": [
           "VirtualNetworkGateways"
         ],
@@ -762,9 +762,13 @@
             "schema": {
               "$ref": "#/definitions/VpnClientIPsecParameters"
             }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
           }
+        },
+        "x-ms-long-running-operation": true		  
         }
-      }	  
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/vpndeviceconfigurationscript": {
       "post": {
@@ -2242,7 +2246,7 @@
         },
         "pfsGroup": {
           "type": "string",
-          "description": "The DH Groups used in IKE Phase 2 for new child SA.",
+          "description": "The Pfs Groups used in IKE Phase 2 for new child SA.",
           "enum": [
             "None",
             "PFS1",
@@ -2372,7 +2376,7 @@
         },
         "pfsGroup": {
           "type": "string",
-          "description": "The DH Groups used in IKE Phase 2 for new child SA.",
+          "description": "The Pfs Groups used in IKE Phase 2 for new child SA.",
           "enum": [
             "None",
             "PFS1",

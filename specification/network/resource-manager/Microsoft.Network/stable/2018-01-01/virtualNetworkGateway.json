@@ -762,12 +762,8 @@
             "schema": {
               "$ref": "#/definitions/VpnClientIPsecParameters"
             }
-          },
-		  "202": {
-            "description": "Accepted and the operation will complete asynchronously."
           }
-        },
-		"x-ms-long-running-operation": true
+        }
       }
     },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/vpndeviceconfigurationscript": {

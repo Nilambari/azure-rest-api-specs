@@ -720,7 +720,7 @@
           "200": {
             "description": "Request successful. The operation sets the specificed vpnclient ipsec parameters for P2S client of the virtual network gateway.",
             "schema": {
-              "$ref": "#/definitions/VirtualNetworkGateway"
+              "$ref": "#/definitions/VpnClientIPsecParameters"
             }
           }
         },

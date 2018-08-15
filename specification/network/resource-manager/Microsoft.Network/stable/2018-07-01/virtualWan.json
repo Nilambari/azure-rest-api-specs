@@ -1584,6 +1584,22 @@
             "$ref": "./network.json#/definitions/SubResource"
           }
         },
+        "securityProviderName": {
+          "type": "string",
+          "description": "The Security Provider name."
+        },
+        "allowBranchToBranchTraffic": {
+          "type": "boolean",
+          "description": "True if branch to branch traffic is allowed."
+        },
+        "allowVnetToVnetTraffic": {
+          "type": "boolean",
+          "description": "True if Vnet to Vnet traffic is allowed."
+        },
+        "office365LocalBreakoutCategory": {
+          "description": "The office local breakout category.",
+          "$ref": "#/definitions/OfficeTrafficCategory"
+        },
         "provisioningState": {
           "description": "The provisioning state of the resource.",
           "$ref": "#/definitions/ProvisioningState"
@@ -1658,6 +1674,10 @@
         "provisioningState": {
           "description": "The provisioning state of the resource.",
           "$ref": "#/definitions/ProvisioningState"
+        },
+        "isSecuritySite": {
+          "type": "boolean",
+          "description": "IsSecuritySite flag"
         }
       },
       "description": "Parameters for VpnSite"
@@ -1722,7 +1742,7 @@
           "$ref": "./network.json#/definitions/SubResource",
           "description": "The VirtualWAN to which the VirtualHub belongs"
         },
-        "hubVirtualNetworkConnections": {
+        "virtualNetworkConnections": {
           "type": "array",
           "description": "list of all vnet connections with this VirtualHub.",
           "items": {
@@ -1799,9 +1819,10 @@
           "description": "The provisioning state of the resource.",
           "$ref": "#/definitions/ProvisioningState"
         },
-        "policies": {
-          "description": "The policies applied to this vpn gateway.",
-          "$ref": "#/definitions/Policies"
+        "vpnGatewayScaleUnit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The scale unit for this vpn gateway."
         }
       },
       "description": "Parameters for VpnGateway"
@@ -1871,7 +1892,7 @@
           "readOnly": true,
           "description": "Egress bytes transferred."
         },
-        "connectionBandwidthInMbps": {
+        "connectionBandwidth": {
           "type": "integer",
           "format": "int32",
           "readOnly": true,
@@ -1891,6 +1912,14 @@
             "$ref": "./virtualNetworkGateway.json#/definitions/IpsecPolicy"
           },
           "description": "The IPSec Policies to be considered by this connection."
+        },
+        "enableRateLimiting": {
+          "type": "boolean",
+          "description": "EnableBgp flag"
+        },
+        "enableInternetSecurity": {
+          "type": "boolean",
+          "description": "Enable internet security"
         },
         "provisioningState": {
           "description": "The provisioning state of the resource.",
@@ -1952,6 +1981,10 @@
         "allowRemoteVnetToUseHubVnetGateways": {
           "type": "boolean",
           "description": "Allow RemoteVnet to use Virtual Hub's gateways."
+        },
+        "enableInternetSecurity": {
+          "type": "boolean",
+          "description": "Enable internet security"
         },
         "provisioningState": {
           "description": "The provisioning state of the resource.",
@@ -2022,19 +2055,6 @@
         }
       },
       "description": "List of properties of the device."
-    },
-    "Policies": {
-      "properties": {
-        "allowBranchToBranchTraffic": {
-          "type": "boolean",
-          "description": "True if branch to branch traffic is allowed."
-        },
-        "allowVnetToVnetTraffic": {
-          "type": "boolean",
-          "description": "True if Vnet to Vnet traffic is allowed."
-        }
-      },
-      "description": "Policies for vpn gateway."
     },
     "ProvisioningState": {
       "type": "string",
@@ -2109,6 +2129,21 @@
       ],
       "x-ms-enum": {
         "name": "access",
+        "modelAsString": true
+      }
+    },
+    "OfficeTrafficCategory": {
+      "type": "string",
+      "description": "The office traffic category.",
+      "readOnly": true,
+      "enum": [
+        "Optimize",
+        "OptimizeAndAllow",
+        "All",
+        "None"
+      ],
+      "x-ms-enum": {
+        "name": "officeTrafficCategory",
         "modelAsString": true
       }
     }
